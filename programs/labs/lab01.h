@@ -26,29 +26,29 @@ int main()
     led_vermR = !led_vermR;
 
     // Test all motors with different frequencies (to make different noises)
-    motor1.period(1.0/264.0);
-    motor2.period(1.0/297.0);
-    motor3.period(1.0/330.0);
-    motor4.period(1.0/352.0);
+    motor1.period(0.5/264.0);
+    motor2.period(1.0/264.0);
+    motor3.period(2.0/264.0);
+    motor4.period(4.0/264.0);
+    while(1){
+        motor1 = 0.1;
+        wait(0.1);
+        motor1 = 0.0;
 
-    motor1 = 0.1;
-    wait(3);
-    motor1 = 0.0;
+        motor2 = 0.1;
+        wait(0.1);
+        motor2 = 0.0;
 
-    motor2 = 0.1;
-    wait(3);
-    motor2 = 0.0;
+        motor3 = 0.1;
+        wait(0.1);
+        motor3 = 0.0;
 
-    motor3 = 0.1;
-    wait(3);
-    motor3 = 0.0;
+        motor4 = 0.1;
+        wait(0.1);
+        motor4 = 0.0;
 
-    motor4 = 0.1;
-    wait(3);
-    motor4 = 0.0;
-
-    wait(3);
-
+        wait(3);
+    }
 
     // Turn off red LEDs indicating motors are disarmed
     led_vermL = !led_vermL;
