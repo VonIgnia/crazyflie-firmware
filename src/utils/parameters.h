@@ -6,6 +6,8 @@
 // Physical constants
 const float pi = 3.1416;
 const float g = 9.81;       // m/s^2
+const float a2 = 2.0e-9;
+const float a1 = -1.0e-5;
 
 // Quadcopter dimensions
 const float m = 30.0e-3;    // kg
