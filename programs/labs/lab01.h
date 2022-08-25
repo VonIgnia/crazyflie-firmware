@@ -39,7 +39,7 @@ int main()
         wait(0.1);
         motor2 = 0.0;
 
-        motor3 = 0.2;
+        motor3 = 0.3;
         wait(0.1);
         motor3 = 0.0;
 
