@@ -1,7 +1,8 @@
 #include "mbed.h"
 #include "crazyflie.h"
+#include "parameters.h"
 
-PwmOut motor4(MOTOR4);
+PwmOut motor(MOTOR4);
 
 // função para converter velocidade angular em duty cycle do PWM
 float control_motor(float omega)
@@ -11,8 +12,9 @@ float control_motor(float omega)
 
 int main()
 {
-    motor4.period(1.0/500.0); // frequencia do motor
-    motor4 = control_motor(1000.0);
-    wait(0.5);
-    motor4 = 0.0;
+    motor.period(1.0/500.0); // frequencia do motor
+    motor = control_motor(2500.0);
+    //motor = 0.1;
+    wait(5);
+    motor = 0.0;
 }
