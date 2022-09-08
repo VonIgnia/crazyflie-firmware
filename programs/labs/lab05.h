@@ -8,11 +8,11 @@ PwmOut motor_3 ( MOTOR3 );
 PwmOut motor_4 ( MOTOR4 );
 
 // Define angular velocities (rad/s)
-float omega_1;
-float omega_2;
-float omega_3;
-float omega_4;
-
+float omega_1 = 0;
+float omega_2 = 0;
+float omega_3 = 0;
+float omega_4 = 0;
+//
 // Converts desired angular velocity (rad/s) to PWM signal (%)
 float control_motor ( float omega )
 {
@@ -23,13 +23,21 @@ float control_motor ( float omega )
 void mixer ( float f_t , float tau_phi , float tau_theta , float tau_psi )
 {
     float a = 0.25/(kl), b = 0.25/(kl*l), c = 0.25/(kd);
+    float omegas2[4];
 
-    float omega_12 = a*f_t - b*tau_phi - b*tau_theta - c*tau_psi;
-    float omega_22 = a*f_t - b*tau_phi + b*tau_theta + c*tau_psi;
-    float omega_32 = a*f_t + b*tau_phi + b*tau_theta - c*tau_psi;
-    float omega_42 = a*f_t + b*tau_phi - b*tau_theta + c*tau_psi;
+    omegas2[0] = a*f_t - b*tau_phi - b*tau_theta - c*tau_psi;
+    omegas2[1] = a*f_t - b*tau_phi + b*tau_theta + c*tau_psi;
+    omegas2[2] = a*f_t + b*tau_phi + b*tau_theta - c*tau_psi;
+    omegas2[3] = a*f_t + b*tau_phi - b*tau_theta + c*tau_psi;
+    
+    float omegas[4];
 
-    //for omega
+    for(int i=0; i < 4; i++)
+    {
+        omegas[i] = (omegas2[i] < 0) ? 0 : sqrt(omegas2[i]); // se for negativo, não rodar
+    }
+
+    omega_1 = omegas[0]; omega_2 = omegas[1]; omega_3 = omegas[2]; omega_4 = omegas[3];
 }
 
 // Actuate motors with desired total trust force (N) and torques (N.m)
@@ -51,7 +59,7 @@ motor_2 . period (1.0/500.0) ;
 motor_3 . period (1.0/500.0) ;
 motor_4 . period (1.0/500.0) ;
 // Actuate motor with 70% mg total thrust force (N) and zero torques (N.m)
-actuate (0.5* m*g ,0 ,0 ,0) ;
+actuate (0 ,0 ,0 ,-0.001);
 wait (5) ;
 // Turn off all motors
 actuate (0 ,0 ,0 ,0) ;
