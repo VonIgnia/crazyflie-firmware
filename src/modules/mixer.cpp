@@ -2,7 +2,9 @@
 
 // Class constructor
 Mixer::Mixer()
-    : motor_1(MOTOR1), motor_2(MOTOR2), motor_3(MOTOR3), motor_4(MOTOR4) {
+    : motor_1(MOTOR1), motor_2(MOTOR2), motor_3(MOTOR3), motor_4(MOTOR4), 
+    led_verdeL(LED_GREEN_L, !false), led_verdeR(LED_GREEN_R, !false), 
+    led_vermL(LED_RED_L, !false), led_vermR(LED_RED_R, !false){
   motor_1.period(1.0 / 500.0);
   motor_2.period(1.0 / 500.0);
   motor_3.period(1.0 / 500.0);
@@ -15,12 +17,12 @@ Mixer::Mixer()
 
 // Actuate motors with desired total trust force (N) and torques (N.m)
 void Mixer::actuate(float f_t, float tau_phi, float tau_theta, float tau_psi) {
-  if (armed){
-  mixer(f_t, tau_phi, tau_theta, tau_psi);
-  motor_1 = control_motor(omega_1);
-  motor_2 = control_motor(omega_2);
-  motor_3 = control_motor(omega_3);
-  motor_4 = control_motor(omega_4);
+  if (armed) {
+    mixer(f_t, tau_phi, tau_theta, tau_psi);
+    motor_1 = control_motor(omega_1);
+    motor_2 = control_motor(omega_2);
+    motor_3 = control_motor(omega_3);
+    motor_4 = control_motor(omega_4);
   }
 }
 
@@ -53,11 +55,48 @@ float Mixer ::control_motor(float omega) {
   return a2 * omega * omega + a1 * omega; // função obtida experimentalmente
 }
 
-void Mixer ::arm() { 
-    armed = true; 
+void Mixer ::arm() {
+  motor_1.period(0.5/264.0);
+  motor_1 = 0.01;
+  wait(0.1);
+  motor_1 = 0.0;
+  led_vermL = !led_vermL;
+  led_vermR = !led_vermR;
+  wait_ms(500);
+  led_vermL = !led_vermL;
+  led_vermR = !led_vermR;
+  wait_ms(500);
+  motor_1.period(0.5/264.0);
+  motor_1 = 0.01;
+  wait(0.1);
+  motor_1 = 0.0;
+  led_vermL = !led_vermL;
+  led_vermR = !led_vermR;
+  wait_ms(500);
+  led_vermL = !led_vermL;
+  led_vermR = !led_vermR;
+  wait_ms(500);
+  motor_1.period(0.5/264.0);
+  motor_1 = 0.01;
+  wait(0.1);
+  motor_1 = 0.0;
+  led_vermL = !led_vermL;
+  led_vermR = !led_vermR;
+  wait_ms(500);
+  led_vermL = !led_vermL;
+  led_vermR = !led_vermR;
+  wait_ms(500);
+  led_vermL = !true;
+  led_vermR = !true;
+  armed = true;
 }
 
-void Mixer ::disarm() { 
-    actuate(0, 0, 0, 0);
-    armed = false; 
+void Mixer ::disarm() {
+  actuate(0, 0, 0, 0);
+  led_vermL = !false;
+  led_vermR = !false;
+  led_verdeL = !true;
+  led_verdeR = !true;
+
+  armed = false;
 }

@@ -13,8 +13,8 @@ public:
   void actuate(float f_t, float tau_phi, float tau_theta, float tau_psi);
 
   void arm();
-
   void disarm();
+
 
 private:
   // Motors PWM outputs
@@ -31,6 +31,7 @@ private:
   float control_motor(float omega);
 
   bool armed;
+  DigitalOut led_verdeL, led_verdeR, led_vermL, led_vermR;
 };
 
 #endif
