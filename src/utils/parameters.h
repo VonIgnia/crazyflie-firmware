@@ -21,6 +21,8 @@ const float I_yy = 16.0e-6; // kg.m^2
 const float I_zz = 29.0e-6; // kg.m^2 
 const float l = 33.0e-3;    // m
 
-const float dt = 0.002; // 2ms = 500Hz
+const float dt = 0.002; // 2ms = 500Hz (lab07)
+const float wc = 1; // frequencia de corte do filtro passa baixa em rad/s (lab 07)
+const float alpha = (wc*dt)/(1+wc*dt); // fator de suavização
 
 #endif

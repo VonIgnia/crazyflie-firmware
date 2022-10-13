@@ -19,9 +19,11 @@ public:
   // Angular velocities ( rad /s)
   float p, q, r;
 
+
 private:
   // IMU sensor object
   // MPU9250 imu;
   BMI088 imu ;
+  float p_bias, q_bias, r_bias;
 };
 #endif
