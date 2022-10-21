@@ -37,7 +37,9 @@ int main() {
       att_est.estimate();
       att_cont.control(phi_r, theta_r, psi_r, att_est.phi, att_est.theta,
                        att_est.psi, att_est.p, att_est.q, att_est.r);
-      mixer.actuate(f_t, 0.0, att_cont.tau_theta, 0.0);
+      //mixer.actuate(f_t, 0.0, att_cont.tau_theta, 0.0); //estabilizador de angulo theta
+      mixer.actuate(0.6*f_t, att_cont.tau_phi, att_cont.tau_theta, att_cont.tau_psi); //teste de queda livre controlada
+
     }
   }
   // Disarm motors and end program

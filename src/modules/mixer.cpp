@@ -4,7 +4,8 @@
 Mixer::Mixer()
     : motor_1(MOTOR1), motor_2(MOTOR2), motor_3(MOTOR3), motor_4(MOTOR4), 
     led_verdeL(LED_GREEN_L, !false), led_verdeR(LED_GREEN_R, !false), 
-    led_vermL(LED_RED_L, !false), led_vermR(LED_RED_R, !false){
+    led_vermL(LED_RED_L, !false), led_vermR(LED_RED_R, !false)
+{
   motor_1.period(1.0 / 500.0);
   motor_2.period(1.0 / 500.0);
   motor_3.period(1.0 / 500.0);
