@@ -28,4 +28,7 @@
 //Incluindo a classe contrladora de atitude
 #include "modules/attitude_controller.h"
 
+//Incluindo a classe do estimador vertical
+#include "modules/vertical_estimator.h"
+
 #endif

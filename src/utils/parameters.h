@@ -52,4 +52,8 @@ const float wn_psi = 4/(zeta_phi*Ts_phi);   // frequência angular
 const float kp_psi = wn_phi*wn_phi; // ganho kp
 const float kd_psi = 2*zeta_phi*wn_phi;  // ganho kd
 
+const float dt_range = 50;// 50 ms
+const float wc_ve = 10;// frequencia de corte do estimador vertical
+const float l_ve = wc_ve;//Ganho do Estimador vertical
+
 #endif
