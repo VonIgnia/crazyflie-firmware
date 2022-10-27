@@ -18,15 +18,18 @@ void VerticalEstimator ::predict(float f_t) {
   // z = z + w * dt;
   /// w = w;
 
-  // observador ordem 2 com entrada
-  w += (-g + (1/m)*f_t)*dt;
+  // observador ordem 2 com entrada 
   z += w*dt;
+  if (z > 0.05)
+  {
+    w += 0;//(-g + (1/m)*f_t)*dt;
+  }
 }
 
 // Correct vertical position and velocity with measurement
 void VerticalEstimator ::correct(float phi, float theta) {
   range.read();
-  if (range.d < 2.0) {
+  if (range.d < 4.0) {
     // observador ordem 1
     // float z_m = range.d*cos(phi)*cos(theta);
     // z += l_ve*dt_range*(z_m-z);
