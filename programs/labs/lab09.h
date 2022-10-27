@@ -1,7 +1,6 @@
-#include "USBSerial.h"
-#include "crazyflie.h"
 #include "mbed.h"
-
+#include "crazyflie.h"
+#include "USBSerial.h"
 
 // USB serial object
 USBSerial serial;
@@ -36,7 +35,7 @@ int main() {
       if (flag_range) {
         flag_range = false;
         ver_est.correct(att_est.phi, att_est.theta);
-        serial.printf("z [m ]:%6.2 f | w [m/s ]:%6.2 f \n", ver_est.z,
+        serial.printf("z [m ]:%6.2f | w [m/s ]:%6.2f \n", ver_est.z,
                       ver_est.w);
       }
     }

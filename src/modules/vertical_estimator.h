@@ -1,9 +1,9 @@
 #ifndef vertical_estimator_h
 #define vertical_estimator_h
 
-#include "crazyflie.h"
-#include "mbed.h"
 
+#include "mbed.h"
+#include "crazyflie.h"
 
 // Vertical estimator class
 class VerticalEstimator {
