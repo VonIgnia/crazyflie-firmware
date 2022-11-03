@@ -52,7 +52,7 @@ const float wn_psi = 4/(zeta_phi*Ts_phi);   // frequência angular
 const float kp_psi = wn_phi*wn_phi; // ganho kp
 const float kd_psi = 2*zeta_phi*wn_phi;  // ganho kd
 
-// estimador vertical
+// estimador vertical (regulador de estados)
 const float dt_range = 0.05;// 50 ms
 const float wc_ve = 10.0;// frequencia de corte do estimador vertical
 const float l_ve = wc_ve;//Ganho do Estimador vertical
@@ -60,4 +60,10 @@ const float zeta_ve = sqrt(2.0)/2.0;
 const float l_1 = wc_ve*wc_ve;
 const float l_2 = 2.0*zeta_ve*wc_ve;
 
-#endif
+//controlador vertical (regulador de estados)
+const float kp_vc = 5.86;//
+const float kd_vc = 3.42;//
+
+# endif
+
+

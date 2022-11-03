@@ -22,7 +22,7 @@ void VerticalEstimator ::predict(float f_t) {
   z += w*dt;
   if (z > 0.05)
   {
-    w += 0;//(-g + (1/m)*f_t)*dt;
+    w += (-g + (1/m)*f_t)*dt;
   }
 }
 
