@@ -64,6 +64,10 @@ const float l_2 = 2.0*zeta_ve*wc_ve;
 const float kp_vc = 5.86;//
 const float kd_vc = 3.42;//
 
-# endif
+// estimador horizontal
+const float gamma = 42.0*pi/180.0;
+const float W = 420.0;
+const float sigma = 2.0*tan(gamma/2.0)/(W*dt);
+const float l_eh = 50.0;
 
-
+#endif
