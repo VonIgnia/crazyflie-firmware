@@ -45,8 +45,8 @@ const float kd_theta = 2*zeta_theta*wn_theta;  // ganho kd
 const float kp_theta = kp_phi; // ganho kp
 const float kd_theta = kd_phi;  // ganho kd
 
-const float Ts_psi= 0.7;   // tempo de acomodação
-const float UP_psi = 0.008; // ultrapassagem percentual
+const float Ts_psi= 0.6;   // tempo de acomodação
+const float UP_psi = 0.005; // ultrapassagem percentual
 const float zeta_psi = abs(log(UP_phi))/sqrt((log(UP_phi)*log(UP_phi)) + pi*pi);  // fator de amortecimento
 const float wn_psi = 4/(zeta_phi*Ts_phi);   // frequência angular
 const float kp_psi = wn_phi*wn_phi; // ganho kp
@@ -61,13 +61,25 @@ const float l_1 = wc_ve*wc_ve;
 const float l_2 = 2.0*zeta_ve*wc_ve;
 
 //controlador vertical (regulador de estados)
-const float kp_vc = 5.86;//
-const float kd_vc = 3.42;//
+const float Ts_vc= 2.0;   // tempo de acomodação
+const float UP_vc = 0.005; // ultrapassagem percentual
+const float zeta_vc = abs(log(UP_vc))/sqrt((log(UP_vc)*log(UP_vc)) + pi*pi);  // fator de amortecimento
+const float wn_vc = 4/(zeta_vc*Ts_vc);   // frequência angular
+const float kp_vc = wn_vc*wn_vc; // ganho kp
+const float kd_vc = 2*zeta_vc*wn_vc;  // ganho kd
 
 // estimador horizontal
 const float gamma = 42.0*pi/180.0;
 const float W = 420.0;
 const float sigma = 2.0*tan(gamma/2.0)/(W*dt);
 const float l_eh = 50.0;
+
+// controlador horizontal (regulador de estados)
+const float Ts_hc= 2.0;   // tempo de acomodação
+const float UP_hc = 0.005; // ultrapassagem percentual
+const float zeta_hc = abs(log(UP_hc))/sqrt((log(UP_hc)*log(UP_hc)) + pi*pi);  // fator de amortecimento
+const float wn_hc = 4/(zeta_hc*Ts_hc);   // frequência angular
+const float kp_hc = wn_hc*wn_hc; // ganho kp
+const float kd_hc = 2*zeta_hc*wn_hc;  // ganho kd
 
 #endif

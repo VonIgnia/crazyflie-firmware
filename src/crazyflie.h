@@ -37,4 +37,6 @@
 //Incluindo a classe do estimador horizontal
 #include "modules/horizontal_estimator.h"
 
+//Incluindo a classe do controlador horizontal
+#include "modules/horizontal_controller.h"
 #endif
