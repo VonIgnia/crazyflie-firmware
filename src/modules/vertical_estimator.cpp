@@ -20,10 +20,10 @@ void VerticalEstimator ::predict(float f_t) {
 
   // observador ordem 2 com entrada 
   z += w*dt;
-  if (z > 0.05)
-  {
-    w += (-g + (1/m)*f_t)*dt;
-  }
+ // if (z > 0.05)
+ //{
+ //   w += (-g + (1/m)*f_t)*dt;
+ // }
 }
 
 // Correct vertical position and velocity with measurement
