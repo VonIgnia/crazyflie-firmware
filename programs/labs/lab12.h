@@ -14,11 +14,11 @@ HorizontalController hor_cont;
 Ticker tic, tic_range;
 Timer tim;
 float t;
-float ts = 2.0; //tempo de subida
-float tv = 5.0; //tempo de voo
-float td = 2.0; //tempo de descida
-float h = 1.0; //m
-float d = 2.0; //m
+float ts = 4.0; //tempo de subida
+float tv = 3.0; //tempo de voo
+float td = 7.0; //tempo de descida
+float h = 0.8; //m
+float d = 1.7; //m
 
 // Interrupt flag and counter variables
 bool flag, flag_range;
@@ -61,14 +61,14 @@ int main() {
 
       if(t >= ts && t < (ts+tv)) {
           z_r = h;
-          //x_r = (d/tv)*(t-ts);
-          x_r = 0.0;
+          x_r = (d/tv)*(t-ts);
+          //x_r = 0.0;
       }
 
       if(t >= (ts+tv)) {
           z_r = (h/td)*(td+ts+tv-t);
-          //x_r = d;
-          x_r = 0.0;
+          x_r = d;
+          //x_r = 0.0;
       }
       if(t >= (ts+tv+td+1.0))
       {
